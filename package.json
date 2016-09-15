@@ -1,0 +1,27 @@
+{
+  "name": "weather-js-shell",
+  "version": "1.0.0",
+  "description": "A shell script in to inform the user on local weather.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrosata/weather-js-shell.git"
+  },
+  "keywords": [
+    "weather",
+    "utility",
+    "information",
+    "temp",
+    "forecast",
+    "shell"
+  ],
+  "author": "Michael Rosata",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/mrosata/weather-js-shell/issues"
+  },
+  "homepage": "https://github.com/mrosata/weather-js-shell#readme"
+}

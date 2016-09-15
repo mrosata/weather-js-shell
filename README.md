@@ -1,2 +1,2 @@
-# weather-js-shell
-Shell script written in node which informs user on local weather details.
+## weather-js-shell
+A shell script written in node which informs user on local weather details.
