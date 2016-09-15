@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/mrosata/weather-js-shell/issues"
   },
-  "homepage": "https://github.com/mrosata/weather-js-shell#readme"
+  "homepage": "https://github.com/mrosata/weather-js-shell#readme",
+  "dependencies": {
+    "request": "^2.74.0"
+  }
 }
