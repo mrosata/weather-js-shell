@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "weather": "./bin/weather.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mrosata/weather-js-shell.git"
