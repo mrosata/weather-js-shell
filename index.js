@@ -28,10 +28,11 @@ const colorTemp = (temp) => {
   else if (temp < 90)
     return chalk.red(temp)
   else if (temp < 100)
-    return chalk.bold.bgWhite.red(temp)
+    return chalk.bold.bgWhite.magenta(temp)
   else
-    return chalk.bold.bgMagenta.red(temp)
+    return chalk.bold.bgRed.white(temp + '!')
 }
+
 const windSpeed = (speed) => {
   if (speed < 3)
     return chalk.white(speed)
