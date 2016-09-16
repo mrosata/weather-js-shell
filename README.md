@@ -7,3 +7,7 @@ export WEATHER_API_KEY='<put-your-key-into-env>'
 ```
 
 optionally add vars for `WEATHER_API_LONG` and `WEATHER_API_LAT` *(or just get the weather near me)*.
+
+----
+##### Changelog
+* Added in some color to the weather report

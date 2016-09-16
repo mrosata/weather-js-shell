@@ -6,7 +6,44 @@
  *    http://openweathermap.org/appid
  *
  */
-const request = require("request")
+const request = require('request'),
+      chalk = require('chalk')
+
+
+const label = (text) =>
+  chalk.bgBlack.yellow.bold(text)
+const regular = (text) =>
+  chalk.bgBlack.white(text)
+const colorTemp = (temp) => {
+  if (temp < 20)
+    return chalk.bold.bgBlue.white(temp)
+  else if (temp < 32)
+    return chalk.bold.bgWhite.blue(temp)
+  else if (temp < 60)
+    return chalk.bold.blue(temp)
+  else if (temp < 72)
+    return chalk.bgBlack.yellow(temp)
+  else if (temp < 82)
+    return chalk.bold.magenta(temp)
+  else if (temp < 90)
+    return chalk.red(temp)
+  else if (temp < 100)
+    return chalk.bold.bgWhite.red(temp)
+  else
+    return chalk.bold.bgMagenta.red(temp)
+}
+const windSpeed = (speed) => {
+  if (speed < 3)
+    return chalk.white(speed)
+  else if (speed < 5)
+    return chalk.bold.yellow(speed)
+  else if (speed < 10)
+    return chalk.bold.magenta(speed)
+  else if (speed < 20)
+    return chalk.bold.bgMagenta.red(speed)
+  else
+    return chalk.bold.bgYellow.red(speed)
+}
 
 const api = {
   key: 'WEATHER_API_KEY',
@@ -22,7 +59,7 @@ let apiEndPoint = 'api.openweathermap.org/data/2.5/weather'
 
 
 request({
-    uri: `http://${apiEndPoint}?lon=${areaLong}&lat=${areaLat}&APPID=${weatherKey}`,
+    uri: `http://${apiEndPoint}?lon=${areaLong}&lat=${areaLat}&units=imperial&APPID=${weatherKey}`,
   },
 
   function(err, resp, body) {
@@ -32,8 +69,7 @@ request({
     }
 
     let weather = JSON.parse(body)
-    reportWeather(weather)
-
+    console.log(reportWeather(weather))
   })
 
 
@@ -49,13 +85,11 @@ function reportWeather(data) {
       .map(w => `${w.main} ${w.description}`)
       .join(', ')
 
-  let report =
-        `Local Weather: ${data.weather[0].description} \n` +
-        `Current Temp: ${data.main.temp}\n` +
-        `High: ${data.main.temp_min} Low: ${data.main.temp_min} ` +
-        `Humidity: ${data.main.humidity}\n` +
-        `Wind speed: ${data.wind.speed}`
-
-  console.log(report)
+  return '' +
+    `${label('Local Weather: ')}${regular(reports)} \n` +
+    `${label('Current Temp: ')}${regular(data.main.temp)}\n` + 
+    `${label('High: ')}${colorTemp(data.main.temp_min)} `  +
+    `${label('Low: ')}${colorTemp(data.main.temp_min)} ` +
+    `${label('Humidity: ')}${colorTemp(data.main.humidity)}\n` +
+    `${label('Wind speed: ')}${windSpeed(data.wind.speed)}`
 }
-
